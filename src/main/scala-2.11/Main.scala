@@ -12,32 +12,27 @@ object Main extends App {
   //define implicits GetResults to be able to map result to a class
   implicit val getManager = GetResult(res => Manager(res.nextInt, res.nextString, res.nextString))
 
-
-
   try {
-    val managers = TableQuery[Managers]
-    val persons = TableQuery[Persons]
-
-    val personNames = persons.withFilter(_.id > 1).map(_.name)
-
-    val setup = DBIO.seq(
-      (persons.schema ++ managers.schema).create,
-
-      persons += (1, "One", "Oneone", 1),
-      persons += (2, "Two", "Twotwo", 1),
-      persons += (3, "Three", "Threethree", 2),
-
-      managers ++= Seq(
-        (1, "Manager", "Managermanager"),
-        (2, "Lord", "Oftherings")
-      )
-    )
-
-    db.run(setup)
-
-//    db.stream(personNames.result).foreach(println)
-
-    db.run(PersonDAO.findCustomersWithAddress.result).map(_.foreach(println))
+//    val managers = TableQuery[Managers]
+//    val persons = TableQuery[Persons]
+//
+//    val personNames = persons.withFilter(_.id > 1).map(_.name)
+//
+//    val setup = DBIO.seq(
+//      (persons.schema ++ managers.schema).create,
+//
+//      persons += (1, "One", "Oneone", 1),
+//      persons += (2, "Two", "Twotwo", 1),
+//      persons += (3, "Three", "Threethree", 2),
+//
+//      managers ++= Seq(
+//        (1, "Manager", "Managermanager"),
+//        (2, "Lord", "Oftherings")
+//      )
+//    )
+//
+//    db.run(setup)
+//    db.run(personNames.result).map(_.foreach(println))
 
 //    db.run(persons.result).map(_.foreach {
 //      case (id, name, surname, manager) =>
@@ -45,8 +40,9 @@ object Main extends App {
 //    })
 
 //    db.run(sql"""select * from managers""".as[(Int, String, String)]).map(_.foreach(println))
-
 //    db.run(sql"""select * from managers""".as[Manager]).map(_.foreach(println))
+
+    db.run(PersonDAO.findCustomersWithAddress.result).map(_.foreach(println))
 
 
   } finally db.close
