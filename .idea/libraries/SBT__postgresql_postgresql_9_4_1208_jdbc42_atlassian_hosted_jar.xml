@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SBT: postgresql:postgresql:9.4.1208-jdbc42-atlassian-hosted:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/postgresql/postgresql/jars/postgresql-9.4.1208-jdbc42-atlassian-hosted.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
