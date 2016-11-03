@@ -42,7 +42,8 @@ object Main extends App {
 //    db.run(sql"""select * from managers""".as[(Int, String, String)]).map(_.foreach(println))
 //    db.run(sql"""select * from managers""".as[Manager]).map(_.foreach(println))
 
-    db.run(PersonDAO.findCustomersWithAddress.result).map(_.foreach(println))
+    val personToManager = PersonDAO.listPersonWithManager.result
+    db.run(personToManager).map(_.foreach(println))
 
 
   } finally db.close

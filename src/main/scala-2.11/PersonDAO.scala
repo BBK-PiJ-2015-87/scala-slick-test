@@ -4,14 +4,14 @@ object PersonDAO {
   val persons = TableQuery[Persons]
   val managers = TableQuery[Managers]
 
-  def findCustomersWithAddress = {
+  def listPersonWithManager = {
     for {
       p <- persons
       m <- managers if p.manager === m.id
     } yield ((p.id, p.name, p.surname, m.id) -> (m.id, m.name, m.surname))
   }
 
-  //  def findCustomersWithAddress(): List[(Person, Manager)] = {
+  //  def personManager(): List[(Person, Manager)] = {
   //    for {
   //      p <- persons
   //      m <- managers if p.manager === m.id
