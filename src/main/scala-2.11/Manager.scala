@@ -1,0 +1,1 @@
+case class Manager(id: Int, name: String, surname: String)

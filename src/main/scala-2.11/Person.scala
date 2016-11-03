@@ -1,0 +1,1 @@
+case class Person(id: Int, name: String, surname: String, manager: Manager)
